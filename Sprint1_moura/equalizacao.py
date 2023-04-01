@@ -39,7 +39,11 @@ cursor.execute('''CREATE TABLE IF NOT EXISTS dados (
 # Ler o arquivo CSV e inserir os dados na tabela
 with open('EQUALIZACAO_4X_C20.csv', 'r') as csvfile:
     leitor_csv = csv.reader(csvfile, delimiter=';')
-    
+
+#realiza um loop para inserir cada linha do arquivo CSV em um banco de dados SQLite, utilizando o objeto cursor e a função execute.
+
+#A primeira linha do loop (linha "next(leitor_csv)") é utilizada para pular a primeira linha do arquivo CSV, que normalmente é o cabeçalho do arquivo.    
+
     next(leitor_csv)
     for linha in leitor_csv:
         linha1= linha[0]
@@ -69,6 +73,8 @@ with open('EQUALIZACAO_4X_C20.csv', 'r') as csvfile:
         linha25= linha[24]
         linha26= linha[25]
         
+ #essas variáveis são utilizadas como parâmetros na função execute, que realiza a inserção dos dados na tabela "dados" do banco de dados SQLite.
+
         cursor.execute('''INSERT INTO dados ("MeasurementID","Time Stamp", "Step", "Status", "ProgTime", "StepTime",
                 Cycle, "CycleLevel", Procedure_2, Voltage, Current, AhCha, AhDch, AhStep,
                 AhAccu, WhAccu, WhCha, WhDch, WhStep, Channel0270101, Channel0280101,"x1", x2, x3, "Peukert1_75V",x4)
