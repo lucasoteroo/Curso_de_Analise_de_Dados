@@ -19,12 +19,8 @@ print(" ")
 
 # Imprime as linhas selecionadas
 print(linha_especifica)
-conn.close()
 
 #-------------------------------------------------------
-
-# Conecta ao banco de dados SQLite
-conn = sqlite3.connect('pet.db')
 
 # Carrega a tabela do banco de dados em um DataFrame do pandas
 consulta2 = pd.read_sql_query('SELECT * FROM peukert_dados', conn)
